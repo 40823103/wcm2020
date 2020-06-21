@@ -15,3 +15,109 @@
 <p>wcmg4 組長: 40823110<br/>40823103<br/>40823107<br/>40823130<br/>40823142</p>
 <p><span>wcmg5 組長: 40823143</span><br/>40823144<br/>40543118<br/>40823127</p>
 <h1>每周進度</h1>
+<h2>W9-W11</h2>
+<p>說明如何利用 Python 程式讀取學員修課檔案, 以及從 Google Sheet 轉出的 .csv, 分別處理為 List 與 Dictionary 資料格式之後, 逐一根據學員 List 學號, 從 Dictionary 取出自評成績.</p>
+<pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">import csv
+ 
+# read student list
+ 
+filename = 'E:/wcm2020/data/tmp/2020_spring_score/2a/2a_list.txt'
+with open(filename, encoding="utf-8") as f:
+    content = f.readlines()
+#print(content)
+student = [x.strip() for x in content] 
+#print(student)
+ 
+ 
+# Timestamp, email, 修課名稱, url, score, desp, memo
+# 0, 1, 2, 3, 4, 5, 6
+#total = 0
+all = {}
+with open('y:/2020midterm.csv', encoding="utf-8") as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=',')
+    #print(csv_reader)
+ 
+    line_count = 0
+    for row in csv_reader:
+        if line_count == 0:
+            #print(f'Column names are {", ".join(row)}')
+            line_count += 1
+        else:
+            student_num = row[1].split("@")[0]
+            #print(student_num)
+            student_score = row[4]
+            #print(student_score)
+            try:
+                all.update({student_num: student_score})
+            except:
+                all.update({student_num: "error"})
+            #print(f'\t{row[0]} works in the {row[1]} department, and was born in {row[2]}.')
+            #print(f'\t{row[4]}')
+            #total += int(row[4])
+            line_count += 1
+#print(all)
+#print(student)
+ 
+ 
+for i in student:
+     
+    #if i in all:
+        #pass
+    #else:
+        #print(str(i))
+     
+    try:
+        print(i + "\t" + all[i])
+    except:
+        print(i + "\t60")
+ 
+    #print(f'Processed {line_count} lines.')
+    #print("平均=" + str(total/line_count))</pre>
+<h4><span>Python and Flask</span></h4>
+<p><span>Login to your gm email account and download<span> </span><a href="https://drive.google.com/file/d/17_LCSvwgtnIG8FnpezfUlEdbo3Y6G6CP/view?usp=sharing">2019_ABeginnersGuideToPython3Programming.pdf</a></span></p>
+<p><span>Login to your gm email account and download<span> </span><a href="https://drive.google.com/file/d/1u3PHIbGWz3r4bct_molJg8FODkS8tf02/view?usp=sharing">2019_BuildingRESTAPIsWithFlask.pdf</a></span></p>
+<p><span><a href="https://github.com/mstamy2/PyPDF2">https://github.com/mstamy2/PyPDF2</a></span></p>
+<p><span><a href="https://mde.tw/cd2020pj1">https://mde.tw/cd2020pj1</a></span></p>
+<h4><span>W9</span></h4>
+<p><span><a href="https://www.blog.pythonlibrary.org/2018/06/07/an-intro-to-pypdf2/">https://www.blog.pythonlibrary.org/2018/06/07/an-intro-to-pypdf2/</a><br/></span></p>
+<p><span><a href="https://github.com/topics/pypdf2">https://github.com/topics/pypdf2</a><br/></span></p>
+<p><span><a href="https://flask.palletsprojects.com/en/1.1.x/patterns/fileuploads/">https://flask.palletsprojects.com/en/1.1.x/patterns/fileuploads/</a><br/></span></p>
+<p><span><a href="https://www.google.com/search?q=flask+sqlite">Flask 與 SQLite</a></span></p>
+<h4><span>W11</span></h4>
+<p><span>簡介網際內容管理與計算機程式及電腦輔助設計與實習課程的關聯性</span></p>
+<p><span><a href="https://drive.google.com/file/d/1Upv4E7MQAsPr-wYxzFJyo1gxKWmKsmGz/view?usp=sharing">W11 教學影片-1</a><span> </span>(登入 @gm 後可以在線觀看)</span></p>
+<p><span><a href="https://drive.google.com/file/d/1OPBbza3YqhZ7ObqeD5IBVx6cjeoNcNEj/view?usp=sharing">使用 SSH push github 倉儲改版教學影片</a><span> </span>(登入 @gm 後可以在線觀看)</span></p>
+<p><span>說明如何將網際 Python 放入 Virtualbox 虛擬主機中</span></p>
+<p><span><a href="https://drive.google.com/open?id=1AugoZIzC8SlDLqJzRdqAP6cMKQsDr7Oo">Virtualbox Ubuntu 虛擬主機使用教學影片</a><span> </span>(登入 @gm 後可以在線觀看)</span></p>
+<p><a href="https://drive.google.com/open?id=1Ff-mPk9kww_04RxkkiS0lb_2Y9z8Ek1Z">Ubuntu 20.04 wcm2020.ova 下載</a> <span>(登入 @gm 後可以下載)</span></p>
+<h2>W12-W15</h2>
+<h4>W12</h4>
+<p>說明<a href="https://drive.google.com/open?id=1efrb_KABXq1dgkTsR5fYlgU7XrXVAM1p">如何在 Windows 10 中安裝 Ubuntu 20.04 Virtualbox 虛擬主機教學影片</a><span> </span>(for @gm users only)</p>
+<p>說明<a href="https://drive.google.com/open?id=14jVRdDNicuRqbej9ZbwVr-AOqA58crhA">期末專案與 cd2020pj1 的關聯教學影片</a><span> </span>(for @gm users only)</p>
+<p><a href="https://github.com/mdecourse/cd2020pj1">cd2020pj1 倉儲</a></p>
+<h4>W13</h4>
+<p>完成 IPv6 實體主機搭建:<span> </span><a href="http://wcm.kmol.info/">http://wcm.kmol.info</a> (IP 為 ~17:2020::1)</p>
+<p>準備將<span> </span><a href="https://github.com/mdecourse/cd2020pj1.git">https://github.com/mdecourse/cd2020pj1.git</a> 進行開機啟動配置.</p>
+<p>各分組嘗試建立 wcm1.kmol.info ~ wcm4.kmol.info 等實體主機.</p>
+<p>IP 將分別設為 ~17:2020::2 至 ~<span>17:2020::5</span></p>
+<p><span>符號名稱分別為: wcm1.kmol.info ～ wcm4.kmol.info</span></p>
+<p><span>安裝 NGINX WWW Server:</span></p>
+<p><span>sudo apt install nginx</span></p>
+<p><span>nginx 設定檔案位於 /etc/nginx/nginx.conf 可用於配置 CMSiMDE 靜態網頁<br/></span></p>
+<p><span>若在純 IPv6 下需要設定 Proxy, 則在 /etc/apt/apt.conf.d 中需要新增 proxy.conf, 內容如下:</span></p>
+<p><span>Acquire::http::Proxy "http://[proxy_ip_address]:3128";</span></p>
+<p><span>設定時區:</span></p>
+<p><span>sudo timedatectl set-timezone Aia/Taipei<br/></span></p>
+<p><span><a href="https://drive.google.com/open?id=105hlHCk8GRs5LjB_o4EQoBQoQHRSqJQt">W13 教學影片</a>_導入 Filezilla 協助管理 Ubuntu 20.04 實體主機 (for @gm users only)</span></p>
+<h4>W14</h4>
+<p><a href="https://drive.google.com/open?id=1VRElYA7ZOrxjnVDT5meAftvTVKHXVMFs">Ubuntu 20.04 編譯 NGINX 教學影片 1</a><span> </span>(for @gm users only)</p>
+<p><a href="https://drive.google.com/open?id=1EVcgwP_psHe_FiZpB_AanwjQkBjQOZSC">Ubuntu 20.04 編譯 NGINX 教學影片 2</a><span> </span>(for @gm users only)</p>
+<p>各分組除了將 W1-W13 週之上課內容整理至個人及分組的網際內容管理系統之外, 將在虛擬與實體主機上完成網際 PDF 檔案管理系統.</p>
+<h4>W15</h4>
+<p><a href="https://drive.google.com/open?id=1Un5B2kpSJaBI7eVSXfIw4wZvPtH67luV">利用 Pypdf2 切割 pdf 檔案教學影片</a><span> </span>(for @gm users only)</p>
+<p><a href="https://drive.google.com/open?id=1u7lc-NiYQvnIJZjWINbmjpuhKK1x3rw0">利用 HxD 編修 pip.exe 教學影片</a><span> </span>(for @gm users only)</p>
+<p><a href="https://mh-nexus.de/en/hxd/">https://mh-nexus.de/en/hxd/</a></p>
+<p><a href="https://bootstrap.pypa.io/get-pip.py">https://bootstrap.pypa.io/get-pip.py</a></p>
+<p><a href="https://en.wikipedia.org/wiki/STL_(file_format)">https://en.wikipedia.org/wiki/STL_(file_format)</a></p>
+<p>說明如何在 cd2020pj1 網際程式架構下納入 pypdf2 的功能<a href="https://drive.google.com/file/d/1Dws79EjAM3angtiJx9Xuj_Fl-JKv5cpj/view?usp=sharing">教學影片</a><span> </span>(for @gm users only)</p>
+<p><a href="https://github.com/mdecourse/cd2020pj1">https://github.com/mdecourse/cd2020pj1</a></p>

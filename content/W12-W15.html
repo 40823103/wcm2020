@@ -156,12 +156,38 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">About << <a href='About.html'>Previous</a> <a href='Grouping.html'>Next</a> >> Grouping<br /><h1>Develop</h1>
-<p><a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> 的開發, 可以在一個目錄中放入 cmsimde, 然後將 up_dir 中的內容放到與 cmsimde 目錄同位階的地方, 使用 command 進入 cmsimde 目錄, 執行 python wsgi.py, 就可以啟動, 以瀏覽器 https://localhost:9443 就可以連接, 以 admin 作為管理者密碼, 就可以登入維護內容.</p>
-<p>cmsimde 的開發採用 Leo Editor, 開啟 cmsimde 目錄中的 cmsimde.leo 就可以進行程式修改, 結束後, 若要保留網際內容, 只要將 cmsimde 外部的內容倒回 up_dir 目錄中即可後續對 cmsimde 遠端倉儲進行改版.</p>
-<p>init.py 位於  up_dir 目錄, 可以設定 site_title 與 uwsgi 等變數.</p>
-<p>we have </p>
-<br />About << <a href='About.html'>Previous</a> <a href='Grouping.html'>Next</a> >> Grouping</div>
+    <div id="tipue_search_content">W9-W11 << <a href='W9-W11.html'>Previous</a> <a href='W16-W17.html'>Next</a> >> W16-W17<br /><h1>W12-W15</h1>
+<h4>W12</h4>
+<p>說明<a href="https://drive.google.com/open?id=1efrb_KABXq1dgkTsR5fYlgU7XrXVAM1p">如何在 Windows 10 中安裝 Ubuntu 20.04 Virtualbox 虛擬主機教學影片</a><span> </span>(for @gm users only)</p>
+<p>說明<a href="https://drive.google.com/open?id=14jVRdDNicuRqbej9ZbwVr-AOqA58crhA">期末專案與 cd2020pj1 的關聯教學影片</a><span> </span>(for @gm users only)</p>
+<p><a href="https://github.com/mdecourse/cd2020pj1">cd2020pj1 倉儲</a></p>
+<h4>W13</h4>
+<p>完成 IPv6 實體主機搭建:<span> </span><a href="http://wcm.kmol.info/">http://wcm.kmol.info</a> (IP 為 ~17:2020::1)</p>
+<p>準備將<span> </span><a href="https://github.com/mdecourse/cd2020pj1.git">https://github.com/mdecourse/cd2020pj1.git</a> 進行開機啟動配置.</p>
+<p>各分組嘗試建立 wcm1.kmol.info ~ wcm4.kmol.info 等實體主機.</p>
+<p>IP 將分別設為 ~17:2020::2 至 ~<span>17:2020::5</span></p>
+<p><span>符號名稱分別為: wcm1.kmol.info ～ wcm4.kmol.info</span></p>
+<p><span>安裝 NGINX WWW Server:</span></p>
+<p><span>sudo apt install nginx</span></p>
+<p><span>nginx 設定檔案位於 /etc/nginx/nginx.conf 可用於配置 CMSiMDE 靜態網頁<br/></span></p>
+<p><span>若在純 IPv6 下需要設定 Proxy, 則在 /etc/apt/apt.conf.d 中需要新增 proxy.conf, 內容如下:</span></p>
+<p><span>Acquire::http::Proxy "http://[proxy_ip_address]:3128";</span></p>
+<p><span>設定時區:</span></p>
+<p><span>sudo timedatectl set-timezone Aia/Taipei<br/></span></p>
+<p><span><a href="https://drive.google.com/open?id=105hlHCk8GRs5LjB_o4EQoBQoQHRSqJQt">W13 教學影片</a>_導入 Filezilla 協助管理 Ubuntu 20.04 實體主機 (for @gm users only)</span></p>
+<h4>W14</h4>
+<p><a href="https://drive.google.com/open?id=1VRElYA7ZOrxjnVDT5meAftvTVKHXVMFs">Ubuntu 20.04 編譯 NGINX 教學影片 1</a><span> </span>(for @gm users only)</p>
+<p><a href="https://drive.google.com/open?id=1EVcgwP_psHe_FiZpB_AanwjQkBjQOZSC">Ubuntu 20.04 編譯 NGINX 教學影片 2</a><span> </span>(for @gm users only)</p>
+<p>各分組除了將 W1-W13 週之上課內容整理至個人及分組的網際內容管理系統之外, 將在虛擬與實體主機上完成網際 PDF 檔案管理系統.</p>
+<h4>W15</h4>
+<p><a href="https://drive.google.com/open?id=1Un5B2kpSJaBI7eVSXfIw4wZvPtH67luV">利用 Pypdf2 切割 pdf 檔案教學影片</a><span> </span>(for @gm users only)</p>
+<p><a href="https://drive.google.com/open?id=1u7lc-NiYQvnIJZjWINbmjpuhKK1x3rw0">利用 HxD 編修 pip.exe 教學影片</a><span> </span>(for @gm users only)</p>
+<p><a href="https://mh-nexus.de/en/hxd/">https://mh-nexus.de/en/hxd/</a></p>
+<p><a href="https://bootstrap.pypa.io/get-pip.py">https://bootstrap.pypa.io/get-pip.py</a></p>
+<p><a href="https://en.wikipedia.org/wiki/STL_(file_format)">https://en.wikipedia.org/wiki/STL_(file_format)</a></p>
+<p>說明如何在 cd2020pj1 網際程式架構下納入 pypdf2 的功能<a href="https://drive.google.com/file/d/1Dws79EjAM3angtiJx9Xuj_Fl-JKv5cpj/view?usp=sharing">教學影片</a><span> </span>(for @gm users only)</p>
+<p><a href="https://github.com/mdecourse/cd2020pj1">https://github.com/mdecourse/cd2020pj1</a></p>
+<br />W9-W11 << <a href='W9-W11.html'>Previous</a> <a href='W16-W17.html'>Next</a> >> W16-W17</div>
         
     <!-- footer -->
       <div class="container">
