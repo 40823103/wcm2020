@@ -15,8 +15,63 @@
 <p>wcmg4 組長: 40823110<br/>40823103<br/>40823107<br/>40823130<br/>40823142</p>
 <p><span>wcmg5 組長: 40823143</span><br/>40823144<br/>40543118<br/>40823127</p>
 <h1>每周進度</h1>
-<p></p>
-<p>import csv # read student list filename = 'E:/wcm2020/data/tmp/2020_spring_score/2a/2a_list.txt' with open(filename, encoding="utf-8") as f: content = f.readlines() #print(content) student = [x.strip() for x in content] #print(student) # Timestamp, email, 修課名稱, url, score, desp, memo # 0, 1, 2, 3, 4, 5, 6 #total = 0 all = {} with open('y:/2020midterm.csv', encoding="utf-8") as csv_file: csv_reader = csv.reader(csv_file, delimiter=',') #print(csv_reader) line_count = 0 for row in csv_reader: if line_count == 0: #print(f'Column names are {", ".join(row)}') line_count += 1 else: student_num = row[1].split("@")[0] #print(student_num) student_score = row[4] #print(student_score) try: all.update({student_num: student_score}) except: all.update({student_num: "error"}) #print(f'\t{row[0]} works in the {row[1]} department, and was born in {row[2]}.') #print(f'\t{row[4]}') #total += int(row[4]) line_count += 1 #print(all) #print(student) for i in student: #if i in all: #pass #else: #print(str(i)) try: print(i + "\t" + all[i]) except: print(i + "\t60") #print(f'Processed {line_count} lines.') #print("平均=" + str(total/line_count))</p><h2>W10-W11</h2>
+<pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">import csv
+ 
+# read student list
+ 
+filename = 'E:/wcm2020/data/tmp/2020_spring_score/2a/2a_list.txt'
+with open(filename, encoding="utf-8") as f:
+    content = f.readlines()
+#print(content)
+student = [x.strip() for x in content] 
+#print(student)
+ 
+ 
+# Timestamp, email, 修課名稱, url, score, desp, memo
+# 0, 1, 2, 3, 4, 5, 6
+#total = 0
+all = {}
+with open('y:/2020midterm.csv', encoding="utf-8") as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=',')
+    #print(csv_reader)
+ 
+    line_count = 0
+    for row in csv_reader:
+        if line_count == 0:
+            #print(f'Column names are {", ".join(row)}')
+            line_count += 1
+        else:
+            student_num = row[1].split("@")[0]
+            #print(student_num)
+            student_score = row[4]
+            #print(student_score)
+            try:
+                all.update({student_num: student_score})
+            except:
+                all.update({student_num: "error"})
+            #print(f'\t{row[0]} works in the {row[1]} department, and was born in {row[2]}.')
+            #print(f'\t{row[4]}')
+            #total += int(row[4])
+            line_count += 1
+#print(all)
+#print(student)
+ 
+ 
+for i in student:
+     
+    #if i in all:
+        #pass
+    #else:
+        #print(str(i))
+     
+    try:
+        print(i + "\t" + all[i])
+    except:
+        print(i + "\t60")
+ 
+    #print(f'Processed {line_count} lines.')
+    #print("平均=" + str(total/line_count))</pre>
+<p></p><h2>W10-W11</h2>
 <p><span>利用 Python 程式讀取同學修課檔案, 以及從 Google Sheet 轉出的 .csv, 分別處理為 List 與 Dictionary 資料格式之後, 逐一根據同學 List 學號, 從 Dictionary 取出自評成績.</span></p>
 <div class="line number1 index0 alt2"><code class="dart keyword">import</code> <code class="dart plain">csv</code></div>
 <div class="line number2 index1 alt1"><code class="dart spaces"> </code> </div>
