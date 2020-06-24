@@ -156,8 +156,24 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Netplan << <a href='Netplan.html'>Previous</a> <a href='W9-W11.html'>Next</a> >> W9-W11<br /><h1>每周進度</h1>
-<br />Netplan << <a href='Netplan.html'>Previous</a> <a href='W9-W11.html'>Next</a> >> W9-W11</div>
+    <div id="tipue_search_content">伺服器管理 << <a href='伺服器管理.html'>Previous</a> <a href='每周進度.html'>Next</a> >> 每周進度<br /><h1>Netplan</h1>
+<p>若在 Windows 10 中啟動 Virtualbox Ubuntu 20.04 則可將網路設為 Host Only, 不使用 DHCP, 而進入 Ubuntu 之後, 以 netplan 手動設定在 Windows 10 可以連線的區域網路.</p>
+<p>例如: Windows Gateway 設為 192.168.56.1, 而 Host Only 虛擬主機設為 192.168.56.2</p>
+<p>/etc/netplan/00-installer-config.yaml</p>
+<pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp3s0:
+      dhcp6: true
+      addresses:
+        - 10.10.10.2/24
+      gateway4: 10.10.10.1
+      nameservers:
+          search: [mydomain, otherdomain]
+          addresses: [10.10.10.1, 1.1.1.1]
+</pre>
+<br />伺服器管理 << <a href='伺服器管理.html'>Previous</a> <a href='每周進度.html'>Next</a> >> 每周進度</div>
         
     <!-- footer -->
       <div class="container">

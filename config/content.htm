@@ -14,6 +14,181 @@
 <p>wcmg3 組長: 40823125<br/>40823129<br/>40823137<br/>40823136<br/>40823151</p>
 <p>wcmg4 組長: 40823110<br/>40823103<br/>40823107<br/>40823130<br/>40823142</p>
 <p><span>wcmg5 組長: 40823143</span><br/>40823144<br/>40543118<br/>40823127</p>
+<h1>Ubuntu</h1>
+<p>以下為建立 Ubuntu 20.04 虛擬主機, 用於網際內容管理, 電腦輔助設計實習與協同產品設計實習課程, 作爲區域網路或廣域網路伺服器主機課程練習之用.</p>
+<p>由於每一台 Virtualbox 最多可以設定支援 36 片網路卡, 而且設定檔案可以透過程式方法控制各種設定, 因此適合用於上述課程中相關網際應用程式的部署使用, 也可以作為之後將網際程式配置到實體主機, 雲端主機或分散式版次管理系統 CI/CD 配置模擬.</p>
+<p>請登入 ＠gm 帳號後下載<span> </span><a href="https://drive.google.com/open?id=1lnMvowqRTWVgfaMClj2skGjURi148n71">Ubuntu20.04_cd2020pj1.vdi</a><span> </span>(11 GB, 用於 CMSiMDE, CoppeliaSim, Pyslvs, Range3, NGSolve, Jupyter 網際程式開發)</p>
+<p>因為在 Virtualbox 中的每一個虛擬硬碟檔案, 都必須要有獨立的 UUID, 因此若複製虛擬硬碟檔案, 而且要在同一電腦上使用, 可以使用下列指令變更 UUID:</p>
+<p>"c:\Program Files\Oracle\VirtualBox\VBoxManage.exe" internalcommands sethduuid registered_vdi.vdi</p>
+<h4>Ubuntu Server (3GB)</h4>
+<p>登入 @gm 帳號後, 下載<span> </span><a href="https://drive.google.com/open?id=1bUVxVBnMf1mxijl-iP-Sj19n8ASzqOF3">ubuntu-20.04-live-server-amd64.iso</a></p>
+<p>或從 <a href="https://ubuntu.com/download/server">https://ubuntu.com/download/server</a> 下載 Ubuntu Server 20.04 iso 檔案, 利用<span> </span><a href="https://www.virtualbox.org/">Virtualbox</a><span> </span>建立成虛擬主機檔案.</p>
+<h4>安裝 Graphical Environment (1GB)</h4>
+<p>sudo apt install xorg</p>
+<h4>安裝 LXDE Window Manager (800 MB)</h4>
+<p>sudo apt install lxde</p>
+<h4> 安裝 CMSiMDE 所需的 modules</h4>
+<p>若 pip3 尚未安裝, 則以 sudo apt install python3-pip  進行安裝 (增加 200MB)</p>
+<p>sudo pip3 install flask flask_cors lxml bs4 markdown pelican leo</p>
+<h4>安裝開發 Oauth2 所需模組</h4>
+<p>sudo pip3 install authomatic github3.py</p>
+<h4>安裝 CoppeliaSim</h4>
+<p>從<span> </span><a href="https://www.coppeliarobotics.com/ubuntuVersions">https://www.coppeliarobotics.com/ubuntuVersions</a>  下載 edu Linux 版本, 解開壓縮檔案後, 透過 coppelia.sh 執行.</p>
+<p>為了能直接在 Terminal 執行 CoppeliaSim 目錄中的 coppelia.sh, 可以編輯 /etc/profile</p>
+<p>加入 CoppeliaSim 所在目錄:</p>
+<p>export PATH=/home/kmol2020/coppeliasim4:PATH</p>
+<p>然後以 source /etc/profile 讓命令搜尋路徑設定生效.</p>
+<h4>安裝 numpy, opencv-python 與 imutils 等 Python 3 模組, 用於影像辨識程式開發</h4>
+<p>sudo pip3 install numpy opencv-python imutils</p>
+<h4>編譯 Pyslvs-UI</h4>
+<p>git clone --recurse-submodule<span> </span><a href="https://github.com/kmolyuan/solvespace.git">https://github.com/kmolyuan/solvespace.git</a></p>
+<p>cd solvespace/cython</p>
+<p>sudo pip3 install -r requirements.txt</p>
+<p>sudo python3 setup.py install</p>
+<p>git clone --recurse-submodule<span> </span><a href="https://github.com/kmolyuan/pyslvs-ui.git">https://github.com/kmolyuan/pyslvs-ui.git</a></p>
+<p>cd pyslvs-ui</p>
+<p>sudo pip3 install -r requirements.txt</p>
+<p>sudo python3 setup.py install</p>
+<p>完成後以 pyslvs 開啟.</p>
+<h4>編譯 Range3</h4>
+<p>git clone<span> </span><a href="https://github.com/Range-Software/range3.git">https://github.com/Range-Software/range3.git</a></p>
+<p>cd range3</p>
+<p>sudo ./scripts/prereqs_debian.sh</p>
+<p>./scripts/build.sh --clean &amp;&amp; ./scripts/create_package.sh</p>
+<p>執行</p>
+<p>cd build-Release/Range/</p>
+<p>./Range</p>
+<p>修改所有用戶的指令搜尋路徑</p>
+<p>編輯 /etc/profile</p>
+<p>加入</p>
+<p>export PATH=/home/kmol2020/tmp/range3/build-Release/Range:PATH</p>
+<p>之後</p>
+<p>source /etc/profile</p>
+<p>接下來只要輸入 Range 就可以開啟 Range3</p>
+<h4>安裝 NGSolve</h4>
+<p>sudo apt-add-repository universe<br/><br/>sudo add-apt-repository ppa:ngsolve/ngsolve</p>
+<p>sudo apt-get update<br/><br/>sudo apt-get install ngsolve</p>
+<h4>xterm 設定</h4>
+<p>.Xresources 檔案</p>
+<div>
+<div class="syntaxhighlighter js" id="highlighter_710111">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="js plain">xterm*font:     *-fixed-*-*-*-18-*</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>讓 .Xresources 設定生效:</p>
+<div>
+<div class="syntaxhighlighter js" id="highlighter_433929">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="js plain">xrdb ~/.Xresources</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<h4>提高檔案開啟數量</h4>
+<p><code>vi /etc/security/limits.conf</code></p>
+<p><code>加入</code></p>
+<div>
+<div class="syntaxhighlighter js" id="highlighter_365741">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="js plain">* - nofile 40960</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p> 利用</p>
+<p>ulimit -a | grep ‘open files’ 檢查</p>
+<h4>安裝 Jupyterhub</h4>
+<p>install npm and nodejs</p>
+<p>sudo apt -y install npm nodejs</p>
+<p>install proxy with npm</p>
+<p>sudo npm install -g configurable-http-proxy</p>
+<p>install jupyterhub</p>
+<p>sudo pip3 install jupyterhub</p>
+<p>install jupyter notebook</p>
+<p>sudo pip3 install notebook</p>
+<p>完成上述安裝後, 可以利用 jupyterhub --no-ssl 在近端以內定 port 8000 測試.</p>
+<p>若要使用 https 啟動, 可利用</p>
+<p>sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout jupyterhub.key -out jupyterhub.crt</p>
+<p>建立所需的 key 與 certificate, 然後以</p>
+<p>sudo jupyterhub --ip 192.168.56.3 --port 443 --ssl-key jupyterhub.key --ssl-cert jupyterhub.cert</p>
+<p>啟動後, 利用<span> </span><a href="https://192.168.56.3/">https://192.168.56.3</a><span> </span>進行連線.</p>
+<p>其他與 Jupyterhub 有關的參考資料:</p>
+<p><a href="http://project.mde.tw/blog/yen-ji-jie-she-ji-zhuan-ti-xue-yuan-de-sui-shen-jupyter-hub.html">http://project.mde.tw/blog/yen-ji-jie-she-ji-zhuan-ti-xue-yuan-de-sui-shen-jupyter-hub.html</a></p>
+<p><a href="https://cadlab.mde.tw/post/jupyterhub-oauth2-deng-ru-she-ding.html">https://cadlab.mde.tw/post/jupyterhub-oauth2-deng-ru-she-ding.html</a></p>
+<p><a href="https://chiamingyen.github.io/kmolab/blog/jin-duan-jupyterhub-dian-nao-zhu-ji-she-ding.html">https://chiamingyen.github.io/kmolab/blog/jin-duan-jupyterhub-dian-nao-zhu-ji-she-ding.html</a></p>
+<p><a href="https://github.com/jupyterhub/jupyterhub/wiki/Installation-of-Jupyterhub-on-remote-server">https://github.com/jupyterhub/jupyterhub/wiki/Installation-of-Jupyterhub-on-remote-server</a></p>
+<h4>利用網際 Python 程式解平面多連桿機構運動模擬方程式:</h4>
+<p><a href="http://lab.kmol.info/2017fall/blog/kmol-brython-editor-331.html">http://lab.kmol.info/2017fall/blog/kmol-brython-editor-331.html</a></p>
+<h2>伺服器管理</h2>
+<p>常用指令:</p>
+<p>env - 列出 Shell 環境變數</p>
+<p>history - 列出歷史指令, 可利用上下 arrow 鍵列出先前輸入的指令, 也可以使用 Ctrl + p 與 Ctrl + N 往前或往後列出歷史指令.</p>
+<p>Ctrl + c - 終止指令執行</p>
+<p>Ctrl + z - 跳出互動指令執行模式</p>
+<p>cd - change directory</p>
+<p>pwd - print working directory</p>
+<p>mkdir - make directory</p>
+<p>rmdir - remove directory</p>
+<p>ls - list files</p>
+<p>rm - remove files</p>
+<p>cp - copy files</p>
+<p>mv - move files</p>
+<p>cat - display content of a file</p>
+<p>tail - show just the last lines of a file</p>
+<p>head - display first lines of a file</p>
+<p>grep - grep keyword files</p>
+<p>重要檔案:</p>
+<p>每一用戶登入後都會執行 /etc/profile, 因此若有共用的環境變數, 可以寫進 /etc/profile 設定檔案</p>
+<h2>Netplan</h2>
+<p>若在 Windows 10 中啟動 Virtualbox Ubuntu 20.04 則可將網路設為 Host Only, 不使用 DHCP, 而進入 Ubuntu 之後, 以 netplan 手動設定在 Windows 10 可以連線的區域網路.</p>
+<p>例如: Windows Gateway 設為 192.168.56.1, 而 Host Only 虛擬主機設為 192.168.56.2</p>
+<p>/etc/netplan/00-installer-config.yaml</p>
+<pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp3s0:
+      dhcp6: true
+      addresses:
+        - 10.10.10.2/24
+      gateway4: 10.10.10.1
+      nameservers:
+          search: [mydomain, otherdomain]
+          addresses: [10.10.10.1, 1.1.1.1]
+</pre>
 <h1>每周進度</h1>
 <h2>W9-W11</h2>
 <p>說明如何利用 Python 程式讀取學員修課檔案, 以及從 Google Sheet 轉出的 .csv, 分別處理為 List 與 Dictionary 資料格式之後, 逐一根據學員 List 學號, 從 Dictionary 取出自評成績.</p>
